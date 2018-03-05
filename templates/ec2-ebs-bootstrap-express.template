@@ -338,12 +338,14 @@ Resources:
            #!/bin/bash -x
            /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource VirtualMachine --region ${AWS::Region}
            /opt/aws/bin/cfn-signal -e $? --region ${AWS::Region} --stack ${AWS::StackName} --resource VirtualMachine
+           yum install -y git nano
            pip install awscli
            pip install --upgrade --user awsebcli
            export PATH=~/.local/bin:$PATH
            source ~/.bash_profile
-           eb init SignUp -r ${AWS::Region} -k "${KeyName}" -p "Node.js"
-           eb create SignUp --elb-type application --instance_profile="aws-elasticbeanstalk-sample-role" 
+           git clone https://github.com/ha-king/eb-signup-form.git /root/eb
+           cd /root/eb && eb init SignUp -r ${AWS::Region} -k "${KeyName}" -p "Node.js"
+           cd /root/eb && eb create SignUp --elb-type application --instance_profile="aws-elasticbeanstalk-sample-role" 
       SubnetId:
         'Fn::ImportValue': !Sub '${ParentVPC}-${SubnetName}'
       Tags:
