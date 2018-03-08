@@ -2214,7 +2214,7 @@ fieldset[disabled] .btn-danger.active {
 .open .dropdown-toggle.btn-success {
   color: #ffffff;
   background-color: #52a4d3;
-  border-color: #f9ed00;
+  border-color: #ffffff;
 }
 
 .btn-success:active,
@@ -3910,7 +3910,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-pills > li > a {
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 .nav-pills > li + li {
@@ -3920,8 +3920,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  color: #ffffff;
-  background-color: #52a4d3;
+  color: ##52a4d3;
+  background-color: #f9ed00;
 }
 
 .nav-stacked > li {
