@@ -26,10 +26,9 @@ Installed themes include:
 1. Check the **I acknowledge that this template might cause AWS CloudFormation to create IAM resources.** checkbox.
 1. Click **Create** to start the creation of the stack.
 1. Wait until the stack reaches the state **CREATE_COMPLETE**
-1. Copy Bastion Host public IP from the KubeStack outputs tab
 
 ### Updating EBS
-1. Run `eb deploy` to deploy to production
+1. Run `eb deploy` to deploy to production (from Bastion Host as root)
 
 ### Clean Up
-1. Run `eb terminate --all` to clean up.
+1. Run `eb terminate --all` to clean up (from Bastion Host as root)
