@@ -1,5 +1,6 @@
-# AWS Elastic Beanstalk Express Sample App
-This sample application uses the [Express](https://expressjs.com/) framework and [Bootstrap](http://getbootstrap.com/) to build a simple, scalable customer signup form that is deployed to [AWS Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/). The application stores data in [Amazon DynamoDB](http://aws.amazon.com/dynamodb/) and publishes notifications to the [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/sns/) when a customer fills out the form.
+# Elastic Beanstalk SignUp Form (Express)
+
+This webform uses the [Express](https://expressjs.com/) framework and [Bootstrap](http://getbootstrap.com/) to build a simple, scalable customer signup form that is deployed to [AWS Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/). The application stores data in [Amazon DynamoDB](http://aws.amazon.com/dynamodb/) and publishes notifications to the [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/sns/) when a customer fills out the form.
 
 ## Features
 ### Themes
@@ -15,18 +16,20 @@ Installed themes include:
 * [slate](http://bootswatch.com/slate)
 * [united](http://bootswatch.com/united)
 
-You can get started using the following steps:
-  1. [Install the AWS Elastic Beanstalk Command Line Interface (CLI)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
-  2. Create an IAM Instance Profile named **aws-elasticbeanstalk-sample-role** with the policy in [iam_policy.json](iam_policy.json). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
-  3. Run `eb init -r <region> -p "Node.js"` to initialize the folder for use with the CLI. Replace `<region>` with a region identifier such as `us-west-2` (see [Regions and Endpoints](https://docs.amazonaws.cn/en_us/general/latest/gr/rande.html#elasticbeanstalk_region) for a full list of region identifiers). For interactive mode, run `eb init` then,
-    1. Pick a region of your choice.
-    2. Select the **[ Create New Application ]** option.
-    3. Enter the application name of your choice.
-    4. Answer **yes** to *It appears you are using Node.js. Is this correct?*.
-    7. Choose whether you want SSH access to the Amazon EC2 instances.  
-      *Note: If you choose to enable SSH and do not have an existing SSH key stored on AWS, the EB CLI requires ssh-keygen to be available on the path to generate SSH keys.*  
-  4. Run `eb create --instance_profile aws-elasticbeanstalk-sample-role` to begin the creation of your environment.
-    1. Enter the environment name of your choice.
-    2. Enter the CNAME prefix you want to use for this environment.
-  5. Once the environment creation process completes, run `eb open` to open the application in a browser.
-  6. Run `eb terminate --all` to clean up.
+#### Ohio region only
+### Installation Guide
+1. <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=VPC-EBS-SignUp&templateURL=https://s3.us-east-2.amazonaws.com/infascination-public-ohio/cfn-templates/ec2-ebs-signup.template" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>
+1. Click **Next** to proceed with the next step of the wizard.
+1. Specify a name and all parameters for the stack.
+1. Click **Next** to proceed with the next step of the wizard.
+1. Click **Next** to skip the **Options** step of the wizard.
+1. Check the **I acknowledge that this template might cause AWS CloudFormation to create IAM resources.** checkbox.
+1. Click **Create** to start the creation of the stack.
+1. Wait until the stack reaches the state **CREATE_COMPLETE**
+1. Copy Bastion Host public IP from the KubeStack outputs tab
+
+### Updating EBS
+1. Run `eb deploy` to deploy to production
+
+### Clean Up
+1. Run `eb terminate --all` to clean up.
