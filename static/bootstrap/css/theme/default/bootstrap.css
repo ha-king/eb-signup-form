@@ -6816,4 +6816,5 @@ td.visible-print {
 
 #home {
     position:sticky;
+    z-index: 1100;
 }
