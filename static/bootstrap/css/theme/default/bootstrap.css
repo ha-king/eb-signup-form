@@ -48,6 +48,8 @@ html {
 
 body {
   margin: 0;
+  background: #ffffff url("reinvent-photo1.jpg") no-repeat center center;
+  background-position: cover;
 }
 
 a:focus {
