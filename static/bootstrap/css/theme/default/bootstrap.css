@@ -6813,3 +6813,8 @@ td.visible-print {
     min-width: 100%; 
     min-height: 100%;
 }
+
+#home {
+    position:sticky;
+    z-index: 1100;
+}
